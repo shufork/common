@@ -6,7 +6,7 @@ import java.util.concurrent.CompletableFuture;
 
 public abstract class CompletableFutureUtil {
 
-    public static <T> CompletableFuture<Void> AllOf(List<CompletableFuture<T>> futures){
+    public static <T> CompletableFuture<Void> allOf(List<CompletableFuture<T>> futures){
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()]));
     }
     /*

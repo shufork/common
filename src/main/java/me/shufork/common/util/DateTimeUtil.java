@@ -22,7 +22,7 @@ public abstract class DateTimeUtil {
 	 * 获取当前时间的时间戳(Unix Timestamp,UTC)
 	 * @return
 	 */
-	public static long CurrentTimestamp(){
+	public static long currentTimestamp(){
 		return utc().getMillis();
 	}
 

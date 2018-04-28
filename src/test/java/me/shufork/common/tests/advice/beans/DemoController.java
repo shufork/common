@@ -1,6 +1,5 @@
 package me.shufork.common.tests.advice.beans;
 
-import me.shufork.common.exceptions.BaseException;
 import me.shufork.common.exceptions.RecordNotFoundException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
