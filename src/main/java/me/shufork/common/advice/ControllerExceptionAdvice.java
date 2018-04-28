@@ -83,7 +83,7 @@ public class ControllerExceptionAdvice {
     }
 
     @PostConstruct
-    private void onInit(){
+    void onInit(){
         log.info("{} init",getClass().getSimpleName());
     }
 }

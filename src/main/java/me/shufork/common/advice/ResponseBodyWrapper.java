@@ -35,7 +35,9 @@ public class ResponseBodyWrapper implements ResponseBodyAdvice<Object> {
         ReplyBody<Object> replyBody = new ReplyBody<>(ErrorCodeEnums.OK.getValue());
 
         if (body == null) {
-            //
+            log.warn("rest method({}.{}) return null",
+                    returnType.getMethod().getDeclaringClass().getSimpleName() ,returnType.getMethod().getName());
+
         } else if (body instanceof List) {
             replyBody.setDataList((List) body);
         } else if (body instanceof PageResult) {
