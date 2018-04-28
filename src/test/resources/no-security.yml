@@ -1,0 +1,10 @@
+spring:
+  security:
+    enabled: false
+management:
+  security:
+    enabled: false
+security:
+  #ignored: /**
+  basic:
+    enabled: false
