@@ -2,7 +2,7 @@ package me.shufork.common.enums;
 
 public enum BuildInRoleNameEnums {
 
-    ROLE_USER("普通用户"), ROLE_ADMIN("管理员");
+    ROLE_USER("ROLE_USER"), ROLE_ADMIN("ROLE_ADMIN");
 
     private final String value;
 
