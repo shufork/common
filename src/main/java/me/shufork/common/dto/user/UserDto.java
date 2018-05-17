@@ -5,15 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
-import java.util.List;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
         "login_name",
+        "status",
         "display_name",
         "email",
-        "cell_phone_number"})
+        "mobile"})
 @Data
 public class UserDto {
     @JsonProperty("id")
@@ -22,8 +21,8 @@ public class UserDto {
     @JsonProperty("login_name")
     private String loginName;
 
-    @JsonProperty("password")
-    private String password;
+    @JsonProperty("status")
+    private String status;
 
     @JsonProperty("display_name")
     private String displayName;
@@ -31,11 +30,7 @@ public class UserDto {
     @JsonProperty("email")
     private String email;
 
-    @JsonProperty("cell_phone_number")
-    private String cellPhoneNumber;
-
-    @JsonProperty("authorities")
-    private List<UserAuthorityDto> authorities;
-
+    @JsonProperty("mobile")
+    private String mobile;
 
 }

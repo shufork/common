@@ -32,8 +32,7 @@ public class CreateUserDto {
     @ApiModelProperty(value = "邮箱", position = 4, required = true)
     private String email;
 
-    @JsonProperty("cell_phone_number")
-    @NotNull(message = "'cell_phone_number' is required")
+    @JsonProperty("mobile")
     @ApiModelProperty(value = "手机号码", position = 5, required = true)
-    private String cellPhoneNumber;
+    private String mobile;
 }

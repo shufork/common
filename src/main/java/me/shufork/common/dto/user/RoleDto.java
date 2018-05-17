@@ -8,20 +8,27 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
-        "role_name",
+        "name",
         "type",
-        "create_by"})
+        "enabled"})
 @Data
 public class RoleDto {
     @JsonProperty("id")
     private String id;
 
-    @JsonProperty("role_name")
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("type")
+    private String type;
+
+    @JsonProperty("enabled")
+    private Boolean enabled;
+
+    @JsonProperty("description")
+    private String description;
 
     @JsonProperty("create_by")
     private String createBy;
 
-    @JsonProperty("type")
-    private String type;
 }

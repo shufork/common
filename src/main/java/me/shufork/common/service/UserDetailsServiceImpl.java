@@ -1,8 +1,9 @@
 package me.shufork.common.service;
 
 import me.shufork.common.dto.misc.ReplyBody;
-import me.shufork.common.dto.user.UserDto;
+import me.shufork.common.dto.user.UserAuthDto;
 import me.shufork.common.enums.ErrorCodeEnums;
+import me.shufork.common.enums.UserStatusEnums;
 import me.shufork.common.rpc.client.user.UserClient;
 import me.shufork.common.security.AuthDetails;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,24 +25,24 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final ReplyBody<UserDto> replyBody = userClient.loadUserByLoginName(username);
+        final ReplyBody<UserAuthDto> replyBody = userClient.loadUserAuthByLoginName(username);
         if(!replyBody.getCode().equals(ErrorCodeEnums.OK.getValue())){
             throw new UsernameNotFoundException(username);
         }
 
-        final UserDto userDto = replyBody.getData();
-        final List<GrantedAuthority> grantedAuthorities = userDto.getAuthorities().stream()
-                .map( userAuthorityDto -> new SimpleGrantedAuthority(userAuthorityDto.getAuthority()))
+        final UserAuthDto userAuthDto = replyBody.getData();
+        final List<GrantedAuthority> grantedAuthorities = userAuthDto.getRoles().stream()
+                .map( roleDto -> new SimpleGrantedAuthority(roleDto.getName()))
                 .collect(Collectors.toList());
         final AuthDetails authDetails = new AuthDetails(
-                userDto.getId(),
-                userDto.getLoginName(),
-                userDto.getDisplayName(),
-                userDto.getPassword(),
+                userAuthDto.getId(),
+                userAuthDto.getLoginName(),
+                userAuthDto.getDisplayName(),
+                userAuthDto.getPassword(),
+                userAuthDto.getStatus().equals(UserStatusEnums.ACTIVE.toString()),
                 true,
                 true,
-                true,
-                true,
+                !userAuthDto.getStatus().equals(UserStatusEnums.LOCKED.toString()),
                 grantedAuthorities);
         return authDetails;
     }
