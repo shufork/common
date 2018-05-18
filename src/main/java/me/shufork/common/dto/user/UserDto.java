@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
@@ -14,7 +16,7 @@ import lombok.Data;
         "email",
         "mobile"})
 @Data
-public class UserDto {
+public class UserDto  implements Serializable {
     @JsonProperty("id")
     private String id;
 

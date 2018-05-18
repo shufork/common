@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
-public class ServletLogInterceptor implements HandlerInterceptor {
+public class ServletRequestLogger implements HandlerInterceptor {
 
     private static final String X_USER_ID = "x_user_id";
 
