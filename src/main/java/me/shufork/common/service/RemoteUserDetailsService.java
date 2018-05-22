@@ -15,11 +15,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class RemoteUserDetailsService implements UserDetailsService {
 
     private final UserClient userClient;
 
-    public UserDetailsServiceImpl(UserClient userClient) {
+    public RemoteUserDetailsService(UserClient userClient) {
         this.userClient = userClient;
     }
 

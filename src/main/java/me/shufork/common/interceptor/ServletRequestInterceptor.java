@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
-public class ServletRequestLogger implements HandlerInterceptor {
+public class ServletRequestInterceptor implements HandlerInterceptor {
 
     private static final String X_USER_ID = "x_user_id";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        log.trace("[pre handle]:{}",request.getRequestURI());
         String userId = request.getHeader(HttpHerderKeyConstants.X_USER_ID);
 
         if (userId != null) {
@@ -28,12 +29,13 @@ public class ServletRequestLogger implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
+        log.trace("[post handle]:{}",request.getRequestURI());
         MDC.remove(X_USER_ID);
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-
+        log.trace("[after completion]:{}",request.getRequestURI());
     }
 
 }

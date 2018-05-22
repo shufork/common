@@ -8,6 +8,5 @@ import java.io.Serializable;
 public class UserSessionDto implements Serializable {
     private String id;
     private String loginName;
-    private String status;
     private String displayName;
 }
